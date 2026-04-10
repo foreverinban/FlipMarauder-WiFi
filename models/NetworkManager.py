@@ -32,12 +32,13 @@ class NetworkManager:
         return entry.network
 
     def show_discovered_networks(self):
-        print(f"\n{'SSID':<20} | {'BSSID':<18} | {'Hits':<5}")
-        print("-" * 50)
+        print(f"\n{'SSID':<25} | {'BSSID':<18} | {'Hits':<5} | {'Signal'}")
+        print("-" * 75)
 
         entries = list(self.discovered_networks.values())
         sorted_entries = sorted(entries, key=lambda x: x.hit_count, reverse=True)
 
         for entry in sorted_entries:
             net = entry.network
-            print(f"{net.SSID:<20} | {net.get_BSSID:<18} | {entry.hit_count:<5}")
+            signal = net.RSSI_Rate(net._RSSI)
+            print(f"{net.SSID:<25} | {net.get_BSSID:<18} | {entry.hit_count:<5} | {signal}")

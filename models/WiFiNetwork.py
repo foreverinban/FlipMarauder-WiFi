@@ -35,6 +35,10 @@ class WiFiNetwork:
             # TODO: unexpected error
 
     @property
+    def SSID(self) -> str:
+        return self._SSID
+
+    @property
     def get_BSSID(self) -> str:
         return self._BSSID
 

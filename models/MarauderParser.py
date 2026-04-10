@@ -1,41 +1,48 @@
 import re
 from models.WiFiNetwork import WiFiNetwork
 
+# ESP-IDF wifi_auth_mode_t (lower nibble of the trailing auth byte)
+_AUTH_MAP = {
+    0: "OPEN",
+    1: "WEP",
+    2: "WPA",
+    3: "WPA2",
+    4: "WPA/WPA2",
+    5: "Enterprise",
+    6: "WPA3",
+    7: "WPA2/WPA3",
+}
+
 
 class MarauderParser:
-    # Parses Marauder text output, e.g.:
-    # [!] RSSI: -70 Ch: 11 BSSID: AA:BB:CC:DD:EE:FF ESSID: MyWiFi
-    # [AP] Ch:6 RSSI:-67 Enc:WPA2 BSSID:AA:BB:CC:DD:EE:FF ESSID:NetworkName
-
-    _BSSID_RE = re.compile(
-        r'BSSID:\s*([0-9A-Fa-f]{2}(?:[:\-][0-9A-Fa-f]{2}){5})', re.IGNORECASE
+    # Actual Marauder scanap output format:
+    # -62 Ch: 6 44:48:c1:7b:f2:c0 ESSID: DCU-Guest-WiFi 21 04
+    _LINE_RE = re.compile(
+        r'^(-?\d+)\s+'                                        # RSSI
+        r'Ch:\s*(\d+)\s+'                                     # Channel
+        r'([0-9A-Fa-f]{2}(?::[0-9A-Fa-f]{2}){5})\s+'         # BSSID
+        r'ESSID:\s*(.*?)\s+(\d+)\s+(\d+)\s*$'                # ESSID + two trailing ints
     )
-    _RSSI_RE = re.compile(r'RSSI:\s*(-?\d+)', re.IGNORECASE)
-    _CH_RE = re.compile(r'Ch(?:annel)?:\s*(\d+)', re.IGNORECASE)
-    _ESSID_RE = re.compile(
-        r'ESSID:\s*(.+?)(?=\s+(?:BSSID|RSSI|Ch(?:annel)?|Enc(?:ryption)?):|$)',
-        re.IGNORECASE,
-    )
-    _ENC_RE = re.compile(r'Enc(?:ryption)?:\s*(\S+)', re.IGNORECASE)
 
     def parse_line(self, line: str) -> WiFiNetwork | None:
-        bssid_m = self._BSSID_RE.search(line)
-        if not bssid_m:
+        m = self._LINE_RE.match(line)
+        if not m:
             return None
 
-        rssi_m = self._RSSI_RE.search(line)
-        ch_m = self._CH_RE.search(line)
-        essid_m = self._ESSID_RE.search(line)
+        rssi, channel, bssid, essid, _, auth_raw = m.groups()
 
-        if not (rssi_m and ch_m and essid_m):
-            return None
+        ssid = essid.strip()
+        # Hidden networks: Marauder prints BSSID as ESSID
+        if ssid.lower() == bssid.lower():
+            ssid = "Hidden Network"
 
-        enc_m = self._ENC_RE.search(line)
+        auth_mode = int(auth_raw) & 0x0F
+        encryption = _AUTH_MAP.get(auth_mode, f"Unknown({auth_raw})")
 
         return WiFiNetwork(
-            SSID=essid_m.group(1).strip(),
-            BSSID=bssid_m.group(1).upper(),
-            RSSI=int(rssi_m.group(1)),
-            Channel=int(ch_m.group(1)),
-            Encryption=enc_m.group(1) if enc_m else "Unknown",
+            SSID=ssid,
+            BSSID=bssid.upper(),
+            RSSI=int(rssi),
+            Channel=int(channel),
+            Encryption=encryption,
         )
