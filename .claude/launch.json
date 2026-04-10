@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "FlipMarauder (main menu)",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["super.py"],
+      "port": null
+    },
+    {
+      "name": "Port Scanner (utility)",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["logic/port_scanner.py"],
+      "port": null
+    }
+  ]
+}
