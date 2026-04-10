@@ -1,11 +1,11 @@
 [project]
-name = "flipperhomelab"
+name = "FlipMarauder-WiFi"
 version = "0.1.0"
-description = "Add your description here"
+description = "Passive Wi-Fi access point scanner built on top of Flipper Zero + ESP32 WiFi-Module V1 with Marauder Firmware. Collects, parses and persists real-time 802.11 beacon data through a USB-UART bridge."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "aiogram>=3.27.0",
+    "colorama>=0.4.6",
     "psutil>=7.2.2",
     "pyserial>=3.5",
 ]
