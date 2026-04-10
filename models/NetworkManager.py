@@ -39,6 +39,5 @@ class NetworkManager:
         sorted_entries = sorted(entries, key=lambda x: x.hit_count, reverse=True)
 
         for entry in sorted_entries:
-            if entry.hit_count > 1:
-                net = entry.network
-                print(f"{net.SSID:<20} | {net.get_BSSID:<18} | {entry.hit_count:<5}")
+            net = entry.network
+            print(f"{net.SSID:<20} | {net.get_BSSID:<18} | {entry.hit_count:<5}")
