@@ -28,9 +28,10 @@ try:
         
         ser.read_all()
 
-        print("📦 Запрашиваю список команд у чипа...")
-        ser.write(b"help\r\n")
-        time.sleep(2)
+        print("📡 Запускаю сканирование точек доступа...")
+        ser.write(b"scanap\r\n")
+        time.sleep(1)
+
         try:
             while True:
                 if ser.in_waiting > 0:
@@ -40,15 +41,14 @@ try:
                     if not raw_line or ">:" in raw_line:
                         continue
 
-                    print(f"MARAUDER DATA: '{raw_line}'")
+                    print(f"RAW: '{raw_line}'")
 
-                    current_parsed_line = parser.parse_line(raw_line)
+                    wifi_network = parser.parse_line(raw_line)
 
-                    if current_parsed_line:
-                        # Убедись, что в MarauderParser.py возвращается объект с полем .network
-                        network_obj = manager.register_network(current_parsed_line)
-                        db.save_network(network_obj=network_obj)
-                        print(f"✅ Найдена сеть: {current_parsed_line}")
+                    if wifi_network:
+                        manager.register_network(wifi_network)
+                        db.save_network(network_obj=wifi_network)
+                        print(f"✅ Найдена сеть: {wifi_network}")
 
         except KeyboardInterrupt:
             print("\n⏹ Остановка пользователем...")
