@@ -47,22 +47,33 @@ Instead of squinting at a small screen or messy CLI logs, this tool provides a h
 ##  Quick Start
 
 ### 1. Flipper Setup
-* Connect your ESP32 module to the Flipper GPIO.
-* Navigate to: `GPIO` -> `USB-UART Bridge`.
-* Set **Baudrate** to `115200`.
-* Activate the bridge.
+- Connect your ESP32 module to the Flipper GPIO.
+- Navigate to: `GPIO`.
+  <p align="center">
+  <img src="images/Step1.png" alt="GPIO" width="50%">
+</p>
+
+- Navigate to: `USB-UART Bridge`
+<p align="center">
+  <img src="images/Step2.png" alt="GPIO" width="50%">
+</p>
+  
+- Set **Baudrate** to `115200`.
+- Activate the bridge.
 
 ### 2. Installation
 ```bash
 # Clone the repository
 git clone [https://github.com/yourusername/FlipMarauder-WiFi.git](https://github.com/yourusername/FlipMarauder-WiFi.git)
 cd FlipMarauder-WiFi
+uv venv && source .venv/bin/activate  # or .venv\Scripts\activate on Win
+uv pip sync requirements.txt
 ```
-## Install dependencies
-```bash
-pip install -r requirements.txt
-```
+
 ## Roadmap
+<p align="center">
+  <img src="images/scheme.svg" alt="FlipMarauder Architecture Diagram" width="100%">
+</p>
 
 - GPS Sync: Mapping BSSIDs to physical locations.
 - WiGLE Export: Native .csv generation for wardriving uploads.
