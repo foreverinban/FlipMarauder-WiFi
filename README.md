@@ -35,7 +35,7 @@
 Instead of squinting at a small screen or messy CLI logs, this tool provides a high-visibility dashboard and a persistent SQLite backend for your wardriving sessions.
 
 ##  Key Features
-*  **Live Signal Monitoring:** Visualizes RSSI levels with real-time "signal bars" in your terminal.
+*  **Live Signal Monitoring:** Visualizes RSSI levels in your terminal.
 *  **Automatic Data Persistence:** Every discovered Access Point (AP) is automatically logged into a SQLite database.
 *  **Smart Parsing:** Robust RegEx-based parsing to handle different Marauder firmware outputs and hidden SSIDs.
 *  **Hardware Transparency:** Utilizes the Flipper Zero as a stable USB-UART bridge, ensuring minimal data loss.
@@ -64,7 +64,7 @@ Instead of squinting at a small screen or messy CLI logs, this tool provides a h
 ### 2. Installation
 ```bash
 # Clone the repository
-git clone [https://github.com/yourusername/FlipMarauder-WiFi.git](https://github.com/yourusername/FlipMarauder-WiFi.git)
+git clone [https://github.com/foreverinban/FlipMarauder-WiFi.git](https://github.com/foreverinban/FlipMarauder-WiFi.git)
 cd FlipMarauder-WiFi
 uv venv && source .venv/bin/activate  # or .venv\Scripts\activate on Win
 uv pip sync requirements.txt
