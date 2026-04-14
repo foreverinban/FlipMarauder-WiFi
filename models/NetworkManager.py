@@ -18,21 +18,22 @@ class NetworkManager:
     def __init__(self):
         self.discovered_networks = {}
 
-    def register_network(self, WiFiNetwork_obj):
-        current_BSSID = WiFiNetwork_obj.get_BSSID
+    def register_network(self, wifinetwork_obj):
+        current_bssid = wifinetwork_obj.bssid
 
-        if current_BSSID in self.discovered_networks:
-            entry = self.discovered_networks[current_BSSID]
-            entry.update(WiFiNetwork_obj)
+        if current_bssid in self.discovered_networks:
+            entry = self.discovered_networks[current_bssid]
+            entry.update(wifinetwork_obj)
+            is_new = False
         else:
-            entry = NetworkEntry(WiFiNetwork_obj)
-            self.discovered_networks[current_BSSID] = entry
-            print(f"New net is detected: {WiFiNetwork_obj.SSID} [{current_BSSID}]")
+            entry = NetworkEntry(wifinetwork_obj)
+            self.discovered_networks[current_bssid] = entry
+            is_new = True
 
-        return entry.network
+        return entry.network, is_new
 
     def show_discovered_networks(self):
-        print(f"\n{'SSID':<25} | {'BSSID':<18} | {'Hits':<5} | {'Signal'}")
+        print(f"\n{'SSID':<25} | {'bssid':<18} | {'Hits':<5} | {'Signal'}")
         print("-" * 75)
 
         entries = list(self.discovered_networks.values())
@@ -40,5 +41,5 @@ class NetworkManager:
 
         for entry in sorted_entries:
             net = entry.network
-            signal = net.RSSI_Rate(net._RSSI)
-            print(f"{net.SSID:<25} | {net.get_BSSID:<18} | {entry.hit_count:<5} | {signal}")
+            signal = f"{net.rssi} dBm"
+            print(f"{net.ssid:<25} | {net.bssid:<18} | {entry.hit_count:<5} | {signal}")

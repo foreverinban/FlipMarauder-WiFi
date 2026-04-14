@@ -41,11 +41,11 @@ class DataBaseManager:
             VALUES (?, ?, ?, ?, ?, ?)
             """,
             (
-                network_obj._BSSID,
-                network_obj._SSID,
-                network_obj._Encryption,
-                network_obj._Channel,
-                network_obj._RSSI,
+                network_obj.bssid,
+                network_obj.ssid,
+                network_obj.encryption,
+                network_obj.channel,
+                network_obj.rssi,
                 now,  # Используем нашу переменную с временем
             ),
         )
@@ -55,7 +55,7 @@ class DataBaseManager:
             INSERT INTO history (bssid, rssi, timestamp)
             VALUES (?, ?, ?)
             """,
-            (network_obj._BSSID, network_obj._RSSI, now),  # И здесь тоже
+            (network_obj.bssid, network_obj.rssi, now),  # И здесь тоже
         )
 
         self.conn.commit()
