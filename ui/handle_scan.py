@@ -4,10 +4,10 @@ from logger import setup_logger
 from logic.NetScanner import NetScanner
 from ui.clean_screen import clean_screen
 from ui.logo import show_banner
+from ui.network_table import show_discovered_networks
 
 
 def handle_scan() -> None:
-
     logger = setup_logger("FlipMarauder.Scan")
 
     clean_screen()
@@ -16,7 +16,7 @@ def handle_scan() -> None:
     port = input("\nPaste the Port Name: ")
     logger.info("Scan requested for port: %s", port)
 
-    scanner = NetScanner(port)
+    scanner = NetScanner(port, logger=logger)
 
     print("Flipper: GPIO → USB-UART Bridge → Turn the Bridge On")
     print("\nPress Ctrl+C to stop scanning.\n")
@@ -52,3 +52,6 @@ def handle_scan() -> None:
         scanner.stop_scan()
         logger.exception("Unexpected error while scanning")
         print(f"Error: {exception}")
+
+    finally:
+        show_discovered_networks(scanner.manager.get_rows_for_ui())

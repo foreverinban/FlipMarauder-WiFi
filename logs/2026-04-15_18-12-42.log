@@ -1,0 +1,42 @@
+18:12:43 | INFO     | FlipMarauder.Scan | Scan requested for port: /dev/cu.usbmodemflip_Anp4rut1
+18:12:43 | INFO     | FlipMarauder.Scan | Starting scan loop
+18:12:43 | INFO     | FlipMarauder.Scan | Serial connected: port=/dev/cu.usbmodemflip_Anp4rut1 baudrate=115200
+18:12:43 | INFO     | FlipMarauder.Scan | scanap command sent, waiting for AP data
+18:12:44 | DEBUG    | FlipMarauder.Scan | Unparsed serial line: #scanap
+18:12:44 | DEBUG    | FlipMarauder.Scan | Unparsed serial line: Starting AP scan. Stop with stopscan
+18:12:45 | DEBUG    | FlipMarauder.Scan | Unparsed serial line: >
+18:12:48 | INFO     | FlipMarauder.Scan | New network: ssid=DIRECT-D1-HP ENVY 5540 series bssid=FC:3F:DB:16:4A:D2 ch=6 rssi=-67 enc=Enterprise
+18:12:48 | INFO     | FlipMarauder.Scan | New network: ssid=DCU-Guest-WiFi bssid=44:48:C1:7B:F2:C0 ch=6 rssi=-65 enc=WPA/WPA2
+18:12:48 | INFO     | FlipMarauder.Scan | New network: ssid=eduroam bssid=44:48:C1:7B:F2:C1 ch=6 rssi=-65 enc=Unknown(14)
+18:12:48 | INFO     | FlipMarauder.Scan | New network: ssid=Hidden Network bssid=44:48:C1:7B:F2:C2 ch=6 rssi=-65 enc=Unknown(14)
+18:12:48 | INFO     | FlipMarauder.Scan | New network: ssid=iot bssid=44:48:C1:7B:F2:C3 ch=6 rssi=-66 enc=WPA/WPA2
+18:12:49 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:12:52 | INFO     | FlipMarauder.Scan | New network: ssid=eduroam bssid=34:FC:B9:E1:10:A0 ch=10 rssi=-83 enc=Unknown(14)
+18:12:53 | INFO     | FlipMarauder.Scan | New network: ssid=DCU-Guest-WiFi bssid=34:FC:B9:E1:2F:60 ch=11 rssi=-85 enc=WPA/WPA2
+18:12:53 | INFO     | FlipMarauder.Scan | New network: ssid=eduroam bssid=34:FC:B9:E1:2F:61 ch=11 rssi=-84 enc=Unknown(14)
+18:12:53 | INFO     | FlipMarauder.Scan | New network: ssid=Hidden Network bssid=34:FC:B9:E1:2F:62 ch=11 rssi=-84 enc=Unknown(14)
+18:12:53 | INFO     | FlipMarauder.Scan | New network: ssid=iot bssid=34:FC:B9:E1:2F:63 ch=11 rssi=-84 enc=WPA/WPA2
+18:12:53 | INFO     | FlipMarauder.Scan | New network: ssid=DCU-Guest-WiFi bssid=34:FC:B9:E1:10:A1 ch=11 rssi=-81 enc=WPA/WPA2
+18:12:53 | INFO     | FlipMarauder.Scan | New network: ssid=Hidden Network bssid=34:FC:B9:E1:10:A2 ch=11 rssi=-80 enc=Unknown(14)
+18:12:53 | INFO     | FlipMarauder.Scan | New network: ssid=iot bssid=34:FC:B9:E1:10:A3 ch=11 rssi=-81 enc=WPA/WPA2
+18:12:54 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:12:57 | INFO     | FlipMarauder.Scan | New network: ssid=Chromecast9140.b, bssid=FA:8F:CA:58:85:64 ch=1 rssi=-85 enc=WPA/WPA2
+18:12:57 | INFO     | FlipMarauder.Scan | New network: ssid=Hidden Network bssid=34:FC:B9:E1:36:02 ch=1 rssi=-91 enc=Unknown(14)
+18:12:57 | INFO     | FlipMarauder.Scan | New network: ssid=iot bssid=34:FC:B9:E1:36:03 ch=1 rssi=-90 enc=WPA/WPA2
+18:12:57 | INFO     | FlipMarauder.Scan | New network: ssid=eduroam bssid=34:FC:B9:E1:36:01 ch=1 rssi=-91 enc=Unknown(14)
+18:12:59 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:13:04 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:13:09 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:13:11 | INFO     | FlipMarauder.Scan | New network: ssid=DCU-Guest-WiFi bssid=34:FC:B9:E1:36:00 ch=1 rssi=-90 enc=WPA/WPA2
+18:13:11 | INFO     | FlipMarauder.Scan | New network: ssid=iot bssid=34:FC:B9:E1:4B:03 ch=1 rssi=-90 enc=WPA/WPA2
+18:13:14 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:13:19 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:13:24 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:13:29 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:13:34 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:13:39 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:13:44 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:13:49 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:13:54 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:13:59 | DEBUG    | FlipMarauder.Scan | No serial data received yet from Marauder
+18:14:00 | INFO     | FlipMarauder.Scan | Scan stopped by user
