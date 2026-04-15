@@ -2,14 +2,14 @@ from datetime import datetime
 
 
 class NetworkEntry:
-    def __init__(self, WiFiNetwork):
-        self.network = WiFiNetwork
+    def __init__(self, wifi_network):
+        self.network = wifi_network
         self.first_seen = datetime.now()
         self.last_seen = self.first_seen
         self.hit_count = 1
 
-    def update(self, WiFiNetwork):
-        self.network = WiFiNetwork
+    def update(self, wifi_network):
+        self.network = wifi_network
         self.last_seen = datetime.now()
         self.hit_count += 1
 
@@ -32,14 +32,23 @@ class NetworkManager:
 
         return entry.network, is_new
 
-    def show_discovered_networks(self):
-        print(f"\n{'SSID':<25} | {'bssid':<18} | {'Hits':<5} | {'Signal'}")
-        print("-" * 75)
+    def get_entries(self) -> list[NetworkEntry]:
+        return list(self.discovered_networks.values())
 
-        entries = list(self.discovered_networks.values())
-        sorted_entries = sorted(entries, key=lambda x: x.hit_count, reverse=True)
-
-        for entry in sorted_entries:
-            net = entry.network
-            signal = f"{net.rssi} dBm"
-            print(f"{net.ssid:<25} | {net.bssid:<18} | {entry.hit_count:<5} | {signal}")
+    def get_rows_for_ui(self) -> list[dict]:
+        entries = sorted(
+            self.discovered_networks.values(),
+            key=lambda e: e.hit_count,
+            reverse=True,
+        )
+        return [
+            {
+                "ssid": e.network.ssid,
+                "bssid": e.network.bssid,
+                "rssi": e.network.rssi,
+                "hits": e.hit_count,
+                "first_seen": e.first_seen,
+                "last_seen": e.last_seen,
+            }
+            for e in entries
+        ]

@@ -19,3 +19,9 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+
+# Notes
+TODO
+
+# Logs
+.logs/
