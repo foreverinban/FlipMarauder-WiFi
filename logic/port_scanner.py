@@ -3,11 +3,10 @@ import serial.tools.list_ports
 
 def check_ports():
     ports = serial.tools.list_ports.comports()
-    for port in ports:
-        print(f"Port: {port.device}, Description: {port.description}")
 
+    port_dict = {}
 
-if __name__ == "__main__":
-    check_ports()
+    for temp, port in enumerate(ports, start=1):
+        port_dict[str(temp)] = port.device
 
-#Port: /dev/cu.usbmodemflip_Anp4rut1, Description: Anp4rut
+    return port_dict

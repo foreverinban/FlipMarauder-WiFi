@@ -5,6 +5,7 @@ from logic.NetScanner import NetScanner
 from ui.clean_screen import clean_screen
 from ui.logo import show_banner
 from ui.network_table import show_discovered_networks
+from ui.port_options import port_options
 
 
 def handle_scan() -> None:
@@ -13,14 +14,20 @@ def handle_scan() -> None:
     clean_screen()
     show_banner()
 
-    port = input("\nPaste the Port Name: ")
-    logger.info("Scan requested for port: %s", port)
+    port = port_options()
+
+    # logger.info("Scan requested for port: %s", port)
 
     scanner = NetScanner(port, logger=logger)
 
-    print("Flipper: GPIO → USB-UART Bridge → Turn the Bridge On")
+    clean_screen()
+    show_banner()
+
+    print(f"\nChoosen Port is {port}")
+    print("\nFlipper: GPIO → USB-UART Bridge → Turn the Bridge On")
     print("\nPress Ctrl+C to stop scanning.\n")
     input("Press Enter When Bridge is Active...")
+
     logger.info("Starting scan loop")
 
     try:
