@@ -20,7 +20,9 @@ class NetScanner:
         with serial.Serial(self.port, self.baudrate, timeout=1) as ser:
             self.is_running = True
             if self.logger:
-                self.logger.info("Serial connected: port=%s baudrate=%s", self.port, self.baudrate)
+                self.logger.info(
+                    "Serial connected: port=%s baudrate=%s", self.port, self.baudrate
+                )
             ser.write(b"scanap\r\n")
             if self.logger:
                 self.logger.info("scanap command sent, waiting for AP data")
@@ -54,3 +56,4 @@ class NetScanner:
 
     def stop_scan(self):
         self.is_running = False
+        self.db.close()

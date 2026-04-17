@@ -1,25 +1,18 @@
-import os
 import time
 
-
-from ui.logo import show_banner
-from logic.port_scanner import check_ports
+from ui.clean_screen import clean_screen
 from ui.handle_scan import handle_scan
-
-def clean_screen() -> None:
-    os.system("cls" if os.name == "nt" else "clear")
+from ui.logo import show_banner
 
 
 def main_menu() -> None:
     while True:
-        
         clean_screen()
         show_banner()
 
         print("Welcome to FlipMarauder!\n")
         print("Please Choose the Option:\n")
-        print("  1 - List All Ports")
-        print("  2 - Start Scanning (Requires Port)")
+        print("  1 - Choose Port & Start Scanning\n")
         print("  0 - Exit\n")
 
         try:
@@ -31,12 +24,6 @@ def main_menu() -> None:
             continue
 
         if option == 1:
-            clean_screen()
-            show_banner()
-            print(check_ports())
-            input("\nPress Enter to Return to the Menu...")
-
-        elif option == 2:
             handle_scan()
             input("\nPress Enter to Return to the Menu...")
 
@@ -50,8 +37,9 @@ def main_menu() -> None:
             break
 
         else:
-            print("This Option Does Not Exist. Please Enter 0, 1 or 2.")
+            print("This Option Does Not Exist. Please Enter 0 or 1")
             time.sleep(2)
+
 
 if __name__ == "__main__":
     main_menu()
