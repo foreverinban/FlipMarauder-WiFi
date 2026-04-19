@@ -1,10 +1,8 @@
-from colorama import Fore, init
+from textual.widgets import Static
 
-init(autoreset=True)
-
-
-def show_banner():
-    flipper_art = f"""{Fore.CYAN}
+class LogoWidget(Static):
+    def render(self):
+        return """[cyan]
 ⠀⠀⠀⠀⠀⣀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡢⡀⠀⠀⠀⠀
 ⠀⠀⠀⢄⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀
 ⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀
@@ -23,12 +21,8 @@ def show_banner():
 ⠀⠀⠀⠀⠀⠀⠀⠀⣀⡞⠛⠿⣿⣿⠟⠋⠀⠀⠀⠱⣀⠈⣿⣿⡁⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⢠⡠⠔⠋⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀⠙⠲⣿⣧⠀⠀⠀⠀⠀
 ⢀⠔⠒⠀⠉⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡿⠀⠉⠚⠤⢔
-"""
+[/cyan]
+[green]FOREVERDOG[/green]
+[cyan]FLIPMARAUDER-WIFI V1.0[/cyan]
 
-    author_line = f"{Fore.GREEN}{'FOREVERDOG'}"
-    project_line = f"{Fore.CYAN}{'FLIPMARAUDER-WIFI V1.0'}"
-
-    print(flipper_art)
-    print(author_line)
-    print(project_line)
-    print("\n" + "=" * 30 + "\n")
+[dim]──────────────────────────────[/dim]"""

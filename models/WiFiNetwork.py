@@ -10,17 +10,16 @@ class WiFiNetwork:
     encryption : str
 
     @property
-    def rssi_rate(rssi) -> str:
+    def rssi_rate(self) -> str:
+        val = math.ceil(self.rssi)
 
-        val = math.ceil(rssi)
-
-        if rssi >= -50:
-            return f"Very Good Signal Strenght - {val} dbm"
-        if -60 <= val <= -51:
-            return f"Good Signal Strenght - {val} dbm"
-        if -70 <= val <= -61:
-            return f"Moderate Signal Strenght - {val} dbm"
-        if -80 <= val <= -71:
+        if self.rssi >= -50:
+            return f"Very Good Signal Strength - {val} dbm"
+        if -60 <= self.rssi <= -51:
+            return f"Good Signal Strength - {val} dbm"
+        if -70 <= self.rssi <= -61:
+            return f"Moderate Signal Strength - {val} dbm"
+        if -80 <= self.rssi <= -71:
             return f"Bad Signal Strength - {val} dbm"
         return f"Poor Signal Strength - {val} dbm"
        

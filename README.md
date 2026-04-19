@@ -2,7 +2,7 @@
 > **Automated Wi-Fi Reconnaissance & Logging Suite for Flipper Zero**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python: 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![Python: 3.13+](https://img.shields.io/badge/Python-3.13%2B-blue.svg)](https://www.python.org/)
 [![Hardware: Flipper Zero](https://img.shields.io/badge/Hardware-Flipper%20Zero-orange.svg)](https://flipperzero.one/)
 
 <pre>

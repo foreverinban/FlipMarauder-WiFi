@@ -1,0 +1,144 @@
+/* ═══════════════════════════════════════
+   Global
+═══════════════════════════════════════ */
+Screen {
+    background: #0d0d0d;
+}
+
+/* ═══════════════════════════════════════
+   Logo
+═══════════════════════════════════════ */
+LogoWidget {
+    width: 100%;
+    height: auto;
+    content-align: center middle;
+    text-align: center;
+    padding: 1 0;
+}
+
+/* ═══════════════════════════════════════
+   Main Menu
+═══════════════════════════════════════ */
+MainMenuScreen {
+    align: center middle;
+}
+
+#menu-box {
+    width: 44;
+    height: auto;
+    layout: vertical;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+#menu-box LogoWidget {
+    width: 100%;
+    margin-bottom: 1;
+}
+
+#menu-box Button {
+    width: 100%;
+    height: 3;
+    margin: 1 0;
+    content-align: center middle;
+    text-style: bold;
+}
+
+#btn-scan {
+    background: #003333;
+    color: #00ffcc;
+    border: tall #00ffcc;
+}
+
+#btn-scan:hover {
+    background: #005544;
+    color: #ffffff;
+    border: tall #33ffdd;
+}
+
+#btn-exit {
+    background: #200000;
+    color: #ff5555;
+    border: tall #ff4444;
+}
+
+#btn-exit:hover {
+    background: #330000;
+    color: #ffffff;
+    border: tall #ff6666;
+}
+
+/* ═══════════════════════════════════════
+   Port Selection
+═══════════════════════════════════════ */
+PortSelectionScreen {
+    align: center middle;
+}
+
+#port-box {
+    width: 62;
+    height: auto;
+    layout: vertical;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+#port-box LogoWidget {
+    width: 100%;
+    margin-bottom: 1;
+}
+
+#port-box Label {
+    width: 100%;
+    text-align: center;
+    color: #aaaaaa;
+    margin-bottom: 1;
+}
+
+#port-box ListView {
+    width: 100%;
+    height: auto;
+    max-height: 14;
+    border: round #00ffcc;
+    background: #111111;
+    padding: 0 1;
+}
+
+#port-box ListItem {
+    height: 3;
+    padding: 0 1;
+}
+
+#port-box ListItem:hover {
+    background: #002222;
+}
+
+#port-box ListItem.--highlight {
+    background: #003333;
+}
+
+/* ═══════════════════════════════════════
+   Scan Screen
+═══════════════════════════════════════ */
+ScanScreen {
+    layout: vertical;
+    background: #0a0a0a;
+}
+
+ScanTable {
+    width: 100%;
+    height: 1fr;
+    border: round #007766;
+    background: #0a0a0a;
+}
+
+ScanStatusBar {
+    width: 100%;
+    height: 1;
+    background: #001a1a;
+    color: #aaaaaa;
+    padding: 0 2;
+    dock: bottom;
+}

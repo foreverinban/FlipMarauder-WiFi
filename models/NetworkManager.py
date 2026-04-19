@@ -46,6 +46,8 @@ class NetworkManager:
                 "ssid": e.network.ssid,
                 "bssid": e.network.bssid,
                 "rssi": e.network.rssi,
+                "channel": e.network.channel,
+                "encryption": e.network.encryption,
                 "hits": e.hit_count,
                 "first_seen": e.first_seen,
                 "last_seen": e.last_seen,

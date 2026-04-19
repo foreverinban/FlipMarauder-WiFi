@@ -2,7 +2,7 @@ import serial.tools.list_ports
 
 
 def check_ports():
-    ports = serial.tools.list_ports.comports()
+    ports = sorted(serial.tools.list_ports.comports(), key=lambda p: p.device)
 
     port_dict = {}
 

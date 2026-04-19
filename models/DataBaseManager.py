@@ -1,5 +1,6 @@
 import sqlite3
 from datetime import datetime
+from models.WiFiNetwork import WiFiNetwork
 
 
 class DataBaseManager:
@@ -8,6 +9,7 @@ class DataBaseManager:
     def __init__(self, db_path="marauder_data.db"):
         self.conn = sqlite3.connect(db_path)
         self.conn.execute("PRAGMA journal_mode=WAL")
+        self.conn.execute("PRAGMA synchronous=NORMAL")
         self.cursor = self.conn.cursor()
         self._pending = 0
         self._create_tables()
@@ -34,12 +36,18 @@ class DataBaseManager:
         """)
         self.conn.commit()
 
-    def save_network(self, network_obj):
+    def save_network(self, network_obj: WiFiNetwork) -> None:
         now = datetime.now()
         self.cursor.execute(
             """
-            INSERT OR REPLACE INTO networks (bssid, ssid, encryption, channel, last_rssi, last_seen)
+            INSERT INTO networks (bssid, ssid, encryption, channel, last_rssi, last_seen)
             VALUES (?, ?, ?, ?, ?, ?)
+            ON CONFLICT(bssid) DO UPDATE SET
+                ssid=excluded.ssid,
+                encryption=excluded.encryption,
+                channel=excluded.channel,
+                last_rssi=excluded.last_rssi,
+                last_seen=excluded.last_seen
             """,
             (network_obj.bssid, network_obj.ssid, network_obj.encryption,
              network_obj.channel, network_obj.rssi, now),
